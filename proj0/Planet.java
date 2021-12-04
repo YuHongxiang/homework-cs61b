@@ -56,15 +56,6 @@ public class Planet {
     imgFileName = b.imgFileName;
   }
 
-  public Planet() {
-    xxPos = 0;
-    yyPos = 0;
-    xxVel = 0;
-    yyVel = 0;
-    mass = 0;
-    imgFileName = "";
-  }
-
   /**
    * calculates the distance between two Planets.
    *
@@ -86,8 +77,7 @@ public class Planet {
    */
   public double calcForceExertedBy(Planet target) {
     double distance = this.calcDistance(target);
-    double forceExerted = (G * this.mass * target.mass) / (distance * distance);
-    return forceExerted;
+    return (G * this.mass * target.mass) / (distance * distance);
   }
 
   /**
@@ -100,8 +90,7 @@ public class Planet {
     double forceExerted = this.calcForceExertedBy(target);
     double dx = target.xxPos - this.xxPos;
     double distance = this.calcDistance(target);
-    double forceExertedByX = forceExerted * dx / distance;
-    return forceExertedByX;
+    return forceExerted * dx / distance;
   }
 
   /**
@@ -114,8 +103,7 @@ public class Planet {
     double forceExerted = this.calcForceExertedBy(target);
     double dy = target.yyPos - this.yyPos;
     double distance = this.calcDistance(target);
-    double forceExertedByY = forceExerted * dy / distance;
-    return forceExertedByY;
+    return forceExerted * dy / distance;
   }
 
   public double calcNetForceExertedByX(Planet[] allBodys) {
